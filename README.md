@@ -1,4 +1,4 @@
-# music-player
+# Music Player
 
 A devChallenges coding exercise.
 

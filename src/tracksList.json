@@ -1,0 +1,74 @@
+[
+  {
+    "art": "./assets/faelands_1.jpg",
+    "title": "De Bharr na gCnoc",
+    "artist": "Axletree",
+    "source": "./songs/Axletree_De_Bharr_na_gCnoc.mp3"
+  },
+  {
+    "art": "./assets/faelands_2.jpg",
+    "title": "Goldfinch Flight to the North",
+    "artist": "Axletree",
+    "source": "./songs/Axletree_Goldfinch_Flight_to_the_North.mp3"
+  },
+  {
+    "art": "./assets/faelands_3.jpg",
+    "title": "Far Far Away",
+    "artist": "Beat Mekanik",
+    "source": "Beat_Mekanik_Far_Far_Away.mp3"
+  },
+  {
+    "art": "./assets/faelands_4.jpg",
+    "title": "An Samhradh",
+    "artist": "Dee Yan Key",
+    "source": "Dee_Yan_Key_An_Samhradh.mp3"
+  },
+  {
+    "art": "./assets/faelands_5.jpg",
+    "title": "Beyond the Warriors",
+    "artist": "Guifrog",
+    "source": "Guifrog_Beyond_the_Warriors.mp3"
+  },
+  {
+    "art": "./assets/faelands_6.jpg",
+    "title": "Lonely Citadel",
+    "artist": "Guifrog",
+    "source": "Guifrog_Lonely_Citadel.mp3"
+  },
+  {
+    "art": "./assets/faelands_7.jpg",
+    "title": "Forest Lullaby",
+    "artist": "Legacy",
+    "source": "Legacy_Forest_Lullaby.mp3"
+  },
+  {
+    "art": "./assets/faelands_8.jpg",
+    "title": "Lost in City Lights",
+    "artist": "Legacy",
+    "source": "Legacy_Lost_in_City_Lights.mp3"
+  },
+  {
+    "art": "./assets/faelands_1.jpg",
+    "title": "Another Night",
+    "artist": "Mid Air Machine",
+    "source": "Mid_Air_Machine_Another_Night.mp3"
+  },
+  {
+    "art": "./assets/faelands_2.jpg",
+    "title": "Unto the Coven",
+    "artist": "Plasticine Cowboy",
+    "source": "Plasticine_Cowboy_Unto_the_Coven.mp3"
+  },
+  {
+    "art": "./assets/faelands_3.jpg",
+    "title": "Fergus O'Reilly",
+    "artist": "TRG Banks",
+    "source": "TRG_Banks_Fergus_O_Reilly.mp3"
+  },
+  {
+    "art": "./assets/faelands_4.jpg",
+    "title": "Find Serenity",
+    "artist": "Vasyl Sakal",
+    "source": "Vasyl_Sakal_Find_Serenity.mp3"
+  }
+]

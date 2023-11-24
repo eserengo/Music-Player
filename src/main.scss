@@ -5,14 +5,6 @@
  GitHub: https://github.com/eserengo/
 */
 
-$clr-pink: #C93B76;
-$clr-dark-blue: #212936;
-$clr-dark-gray: #4D5562;
-$clr-light-gray: #E5E7EB;
-$clr-opaque: #121826a6;
-
-$shadow: 0px 2px 4px $clr-dark-gray;
-
 :root {
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -28,5 +20,5 @@ $shadow: 0px 2px 4px $clr-dark-gray;
 }
 
 body {
-  min-height: 100vh;
+  min-width: 10rem;
 }
