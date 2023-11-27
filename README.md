@@ -1,35 +1,11 @@
 # Music Player
 
-A devChallenges coding exercise.
+A music player inspired by concept art and fantasy songs.
 
-## Recommended IDE Setup
+![Design preview for the Music Player](./preview.jpg)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Tools
 
-## Customize configuration
+- [Vue](https://vuejs.org/)
+- [Sass](https://sass-lang.com/)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```

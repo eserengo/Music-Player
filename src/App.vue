@@ -1,5 +1,6 @@
 <script>
 import { ref } from "vue"
+import tracksList from "./tracksList.json"
 import prevIcon from "./components/icons/prevIcon.vue"
 import nextIcon from "./components/icons/nextIcon.vue"
 import playIcon from "./components/icons/playIcon.vue"
@@ -15,11 +16,35 @@ export default {
   },
   data() {
     return {
-      currentTrack: document.createElement("audio"),
+      timer: null,
+      art: {
+        type: String,
+        default: null,
+      },
+      title: {
+        type: String,
+        default: null,
+      },
+      artist: {
+        type: String,
+        default: null,
+      },
+      currentTime: {
+        type: String,
+        default: "00:00",
+      },
+      totalDuration: {
+        type: String,
+        default: "00:00",
+      },
+      slider: {
+        type: Number,
+        default: 0,
+      }
     }
   },
   setup() {
-    const track = ref(0);
+    const index = ref(0);
     const isPlaying = ref(false);
 
     const toggleIsPlaying = () => {
@@ -27,10 +52,110 @@ export default {
     }
 
     return {
-      track,
+      index,
       isPlaying,
       toggleIsPlaying,
     }
+  },
+  methods: {
+    // Function to reset all values to their default
+    resetValues() {
+      this.currentTime = "00:00";
+      this.totalDuration = "00:00";
+      this.slider = 0;
+    },
+    
+    loadTrack(tracksIndex) {
+      const target = tracksList[tracksIndex];
+      // Clear the previous seek timer
+      clearInterval(this.timer);
+      this.resetValues();
+    
+      // Load a new track
+      this.$refs.track.src = target.source;
+      this.$refs.track.load();
+    
+      // Update details of the track
+      this.art = target.art;
+      this.title = target.title;
+      this.artist = target.artist;
+
+      //Update track ranges
+      this.totalDuration = this.$refs.track.duration;
+      this.currentTime = this.$refs.track.currentTime;
+    
+      // Set an interval of 1000 milliseconds
+      // for updating the seek slider
+      this.timer = setInterval(this.seekUpdate, 1000);
+    
+      // Move to the next track if the current finishes playing
+      // using the 'ended' event
+      this.$refs.track.addEventListener("ended", this.nextTrack);
+    },
+
+    playTrack() {
+      // Play the loaded track
+      this.$refs.track.play();
+      !this.isPlaying && this.toggleIsPlaying();
+    },
+
+    pauseTrack() {
+      // Pause the loaded track
+      this.$refs.track.pause();
+      this.isPlaying && this.toggleIsPlaying();
+    },
+
+    nextTrack() {
+      // Go back to the first track if the
+      // current one is the last in the track list
+      (this.index < tracksList.length - 1) ? this.index++ : this.index = 0;
+    
+      // Load and play the new track
+      this.loadTrack(this.index);
+      this.isPlaying && this.playTrack();
+    },
+
+    prevTrack() {
+      // Go back to the last track if the
+      // current one is the first in the track list
+      (this.index > 0) ? this.index-- : this.index = tracksList.length - 1;
+      
+      // Load and play the new track
+      this.loadTrack(this.index);
+      this.isPlaying && this.playTrack();
+    },
+
+    seekUpdate() {    
+      // Check if the current track duration is a legible number
+      if (!isNaN(this.$refs.track.duration)) {
+        const seekPosition = (this.$refs.track.currentTime / this.$refs.track.duration) * 100;
+        this.slider = seekPosition;
+
+        // Calculate the time left and the total duration
+        const currentMinutes = Math.floor(this.$refs.track.currentTime / 60);
+        const currentSeconds = Math.floor(this.$refs.track.currentTime % 60);
+        const durationMinutes = Math.floor(this.$refs.track.duration / 60);
+        const durationSeconds = Math.floor(this.$refs.track.duration % 60);
+
+        // Display the updated duration
+        this.currentTime = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
+        this.totalDuration = `${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+      }
+    },
+
+    handleSliderChange() {
+      // Calculate the new currentTime based on the slider value
+      const newTime = (this.slider / 100) * this.$refs.track.duration;
+      
+      // Update the audio's currentTime
+      this.$refs.track.currentTime = newTime;
+      
+      // Update the displayed time
+      this.seekUpdate();
+    },
+  },
+  mounted() {
+    this.loadTrack(this.index);
   },
 }
 </script>
@@ -38,33 +163,37 @@ export default {
 <template>
   <div class="music-app">
     <main class="player">
+
+      <audio ref="track"></audio>
+
       <article class="details">
-        <section class="art"><img src="../src/assets/faelands_1.jpg" alt="faelands" /></section>
-        <section class="title">Test</section>
-        <section class="artist">Test</section>
+        <section class="art" :style="{ 'backgroundImage': `url('${art}')` }"></section>
+        <section class="title" v-text="title"></section>
+        <section class="artist" v-text="artist"></section>
       </article>
 
-      <article class="track">
-        <section class="current">00:00</section>
+      <article class="track-range">
+        <section class="current" v-text="currentTime"></section>
         <input 
           type="range" 
-          min="1" 
+          min="0" 
           max="100"
-          value="0" 
           tabindex="0"
           class="slider"
+          v-model="slider"
+          @input="handleSliderChange"
         >
-        <section class="total">00:00</section>
+        <section class="total" v-text="totalDuration"></section>
       </article>
 
       <article class="controls">
-        <prevIcon />
+        <prevIcon @click="prevTrack" />
         <component
           :is="!isPlaying ? 'playIcon' : 'pauseIcon'"
-          @click="toggleIsPlaying"
+          @click="!this.isPlaying ? this.playTrack() : this.pauseTrack()"
           class="btn"
         />
-        <nextIcon />
+        <nextIcon @click="nextTrack" />
       </article>
     </main>
   </div>
@@ -78,6 +207,7 @@ export default {
   background: url("../src/assets/bg.jpg") no-repeat center;
   background-size: cover;
   min-height: 100vh;
+  padding: min(5vw, 1rem);
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -88,17 +218,11 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem;
   border-radius: 1rem;
   border: 1px solid $clr-opaque;
   box-shadow: $shadow;
-  max-width: 25rem;
-
-    *:hover,
-    *:focus {
-      outline: none;
-    }
 
     .details {
       display: flex;
@@ -106,76 +230,61 @@ export default {
       align-items: center;
 
       .art {
-        width: 100%;
+        width: 996px;
         aspect-ratio: 3;
-
-        & img {
-          border-radius: 0.75rem;
-          box-shadow: $shadow;
-        }
+        border-radius: 0.75rem;
+        box-shadow: $shadow;
+        background-position: top left;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("./assets/faelands_8.jpg");
       }
 
       .title {
         color: $clr-light-gray;
         font-size: min(8vw, 1.25rem);
+        font-size: max(1rem, min(8vw, 1.25rem));
         font-weight: 400;
+        text-align: center;
         margin-block: 1rem 0.5rem;
       }
 
       .artist {
         color: $clr-dark-gray;
         font-size: min(5vw, 0.75rem);
+        font-size: max(0.75rem, min(5vw, 0.75rem));
+        text-align: center;
       }
     }
 
-    .track {
+    .track-range {
       position: relative;
       width: 100%;
 
-      .current {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: $clr-dark-gray;
-        font-size: 0.75rem;
-      }
-
+      .current,
       .total {
         position: absolute;
         top: 0;
-        right: 0;
         color: $clr-dark-gray;
         font-size: 0.75rem;
       }
 
+      .current {
+        left: 0;
+      }
+
+      .total {
+        right: 0;
+      }
+
       .slider {
-        appearance: none;
+        accent-color: $clr-pink;
+        background-color: $clr-light-gray;
         width: 100%;
-        height: 0.25rem;
         margin-top: 1.5rem;
-        background-color: transparent;
-        opacity: 0.8;
-
-        &:hover,
-        &:focus {
-          opacity: 1.0;
-          cursor: pointer;
-        }
-
+        
         &::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          width: 0.5rem;
-          aspect-ratio: 1;
-          border-radius: 50%;
-          background-color: $clr-pink;
-          box-shadow: 1px 1px 4px $clr-pink;
-        }
-
-        &::-webkit-slider-runnable-track {
-          height: 0.5rem;
-          background-color: $clr-light-gray;
-          box-shadow: $shadow;
-          border-radius: 0.5rem;
+          cursor: ew-resize;
         }
       }
     }

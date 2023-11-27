@@ -1,74 +1,98 @@
 [
   {
-    "art": "./assets/faelands_1.jpg",
-    "title": "De Bharr na gCnoc",
-    "artist": "Axletree",
-    "source": "./songs/Axletree_De_Bharr_na_gCnoc.mp3"
-  },
-  {
-    "art": "./assets/faelands_2.jpg",
-    "title": "Goldfinch Flight to the North",
-    "artist": "Axletree",
-    "source": "./songs/Axletree_Goldfinch_Flight_to_the_North.mp3"
-  },
-  {
-    "art": "./assets/faelands_3.jpg",
+    "art": "../src/assets/faelands_1.jpg",
     "title": "Far Far Away",
     "artist": "Beat Mekanik",
-    "source": "Beat_Mekanik_Far_Far_Away.mp3"
+    "source": "../src/songs/Beat_Mekanik_Far_Far_Away.mp3"
   },
   {
-    "art": "./assets/faelands_4.jpg",
-    "title": "An Samhradh",
-    "artist": "Dee Yan Key",
-    "source": "Dee_Yan_Key_An_Samhradh.mp3"
+    "art": "../src/assets/faelands_2.jpg",
+    "title": "Motivation Cinematic Story Extended Version",
+    "artist": "Daddy's Music",
+    "source": "../src/songs/Daddy_s_Music_Motivation_Cinematic_Story_Extended_Version.mp3"
   },
   {
-    "art": "./assets/faelands_5.jpg",
+    "art": "../src/assets/faelands_3.jpg",
     "title": "Beyond the Warriors",
     "artist": "Guifrog",
-    "source": "Guifrog_Beyond_the_Warriors.mp3"
+    "source": "../src/songs/Guifrog_Beyond_the_Warriors.mp3"
   },
   {
-    "art": "./assets/faelands_6.jpg",
+    "art": "../src/assets/faelands_4.jpg",
     "title": "Lonely Citadel",
     "artist": "Guifrog",
-    "source": "Guifrog_Lonely_Citadel.mp3"
+    "source": "../src/songs/Guifrog_Lonely_Citadel.mp3"
   },
   {
-    "art": "./assets/faelands_7.jpg",
+    "art": "../src/assets/faelands_5.jpg",
+    "title": "Lone Wolf",
+    "artist": "Guillherme Bernardez",
+    "source": "../src/songs/Guillherme_Bernardez_Lone_Wolf.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_6.jpg",
+    "title": "For When it Rains",
+    "artist": "Juan Sanchez",
+    "source": "../src/songs/Juan_Sanchez_For_When_it_Rains.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_7.jpg",
+    "title": "Sands of Time",
+    "artist": "Juan Sanchez",
+    "source": "../src/songs/Juan_Sanchez_Sands_of_Time.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_8.jpg",
     "title": "Forest Lullaby",
     "artist": "Legacy",
-    "source": "Legacy_Forest_Lullaby.mp3"
+    "source": "../src/songs/Legacy_Forest_Lullaby.mp3"
   },
   {
-    "art": "./assets/faelands_8.jpg",
+    "art": "../src/assets/faelands_1.jpg",
     "title": "Lost in City Lights",
     "artist": "Legacy",
-    "source": "Legacy_Lost_in_City_Lights.mp3"
+    "source": "../src/songs/Legacy_Lost_in_City_Lights.mp3"
   },
   {
-    "art": "./assets/faelands_1.jpg",
+    "art": "../src/assets/faelands_2.jpg",
+    "title": "Chapter Two",
+    "artist": "Leonell Cassio",
+    "source": "../src/songs/Leonell_Cassio_Chapter_Two.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_3.jpg",
+    "title": "Cinematic Cello",
+    "artist": "Lexin Music",
+    "source": "../src/songs/Lexin_Music_Cinematic_Cello.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_4.jpg",
+    "title": "Medieval Fantasy",
+    "artist": "Lexin Music",
+    "source": "../src/songs/Lexin_Music_Medieval_Fantasy.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_5.jpg",
+    "title": "Ethnic Vocal Trailer",
+    "artist": "Mapamusic",
+    "source": "../src/songs/Mapamusic_Ethnic_Vocal_Trailer.mp3"
+  },
+  {
+    "art": "../src/assets/faelands_6.jpg",
     "title": "Another Night",
     "artist": "Mid Air Machine",
-    "source": "Mid_Air_Machine_Another_Night.mp3"
+    "source": "../src/songs/Mid_Air_Machine_Another_Night.mp3"
   },
   {
-    "art": "./assets/faelands_2.jpg",
-    "title": "Unto the Coven",
-    "artist": "Plasticine Cowboy",
-    "source": "Plasticine_Cowboy_Unto_the_Coven.mp3"
-  },
-  {
-    "art": "./assets/faelands_3.jpg",
+    "art": "../src/assets/faelands_7.jpg",
     "title": "Fergus O'Reilly",
     "artist": "TRG Banks",
-    "source": "TRG_Banks_Fergus_O_Reilly.mp3"
+    "source": "../src/songs/TRG_Banks_Fergus_O_Reilly.mp3"
   },
   {
-    "art": "./assets/faelands_4.jpg",
+    "art": "../src/assets/faelands_8.jpg",
     "title": "Find Serenity",
     "artist": "Vasyl Sakal",
-    "source": "Vasyl_Sakal_Find_Serenity.mp3"
+    "source": "../src/songs/Vasyl_Sakal_Find_Serenity.mp3"
   }
 ]
