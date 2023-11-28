@@ -1,6 +1,6 @@
 # Music Player
 
-A music player inspired by concept art and fantasy songs.
+A media player inspired by concept art and fantasy music.
 
 ![Design preview for the Music Player](./preview.jpg)
 

@@ -14,6 +14,7 @@ export default {
     playIcon,
     pauseIcon,
   },
+  // The reactive properties of the App
   data() {
     return {
       timer: null,
@@ -43,6 +44,7 @@ export default {
       }
     }
   },
+  // The state of the app
   setup() {
     const index = ref(0);
     const isPlaying = ref(false);
@@ -67,6 +69,7 @@ export default {
     
     loadTrack(tracksIndex) {
       const target = tracksList[tracksIndex];
+
       // Clear the previous seek timer
       clearInterval(this.timer);
       this.resetValues();
@@ -207,43 +210,33 @@ export default {
   background: url("../src/assets/bg.jpg") no-repeat center;
   background-size: cover;
   min-height: 100vh;
-  padding: min(5vw, 1rem);
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+  padding: min(4vw, 1rem);
+  @include flex;
   justify-content: center;
 
   .player {  
-  background-color: $clr-opaque;  
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  border: 1px solid $clr-opaque;
-  box-shadow: $shadow;
+    background-color: $clr-opaque;  
+    @include flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: $shadow;
 
     .details {
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
+      @include flex;
 
       .art {
         width: 996px;
         aspect-ratio: 3;
         border-radius: 0.75rem;
-        box-shadow: $shadow;
         background-position: top left;
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: url("./assets/faelands_8.jpg");
       }
 
       .title {
         color: $clr-light-gray;
         font-size: min(8vw, 1.25rem);
-        font-size: max(1rem, min(8vw, 1.25rem));
         font-weight: 400;
         text-align: center;
         margin-block: 1rem 0.5rem;
@@ -252,7 +245,6 @@ export default {
       .artist {
         color: $clr-dark-gray;
         font-size: min(5vw, 0.75rem);
-        font-size: max(0.75rem, min(5vw, 0.75rem));
         text-align: center;
       }
     }
@@ -280,24 +272,21 @@ export default {
       .slider {
         accent-color: $clr-pink;
         background-color: $clr-light-gray;
+        border: none;
         width: 100%;
         margin-top: 1.5rem;
-        
-        &::-webkit-slider-thumb {
-          cursor: ew-resize;
-        }
+        cursor: pointer;
       }
     }
 
     .controls {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
+      @include flex;
+      flex-direction: row;
       gap: 1rem;
 
       .btn {
         width: 2rem;
-        aspect-ratio: 1;
+        height: 2rem;
         border-radius: 50%;
         background-color: $clr-dark-gray;
 
@@ -305,6 +294,21 @@ export default {
         &:focus {
           background-color: $clr-pink;
           box-shadow: 1px 1px 4px $clr-pink;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (width >= 768px) {
+  .music-app {
+    .player {
+      .controls {
+        gap: 2rem;
+
+        .btn {
+          width: 3rem;
+          height: 3rem;
         }
       }
     }

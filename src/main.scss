@@ -20,5 +20,11 @@
 }
 
 body {
-  min-width: 10rem;
+  min-width: 11rem;
+}
+
+@mixin flex {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
